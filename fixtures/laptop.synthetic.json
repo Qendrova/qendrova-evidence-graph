@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "case": { "id": "case-laptop", "title": "Repair, replace, or wait", "deadline": "2026-12-15", "status": "UNDER_REVIEW", "evaluation": { "object": "laptop-a", "version": "v1", "runId": "run-1", "asOf": "2026-11-19" } },
+  "options": [
+    { "id": "option-repair", "label": "Repair the current laptop", "position": "repair" },
+    { "id": "option-buy", "label": "Buy a replacement laptop", "position": "buy" },
+    { "id": "option-wait", "label": "Wait three months", "position": "wait" }
+  ],
+  "criteria": [
+    { "id": "criterion-budget", "label": "Total cost stays within budget", "hardBoundary": true },
+    { "id": "criterion-reliability", "label": "Reliable for twelve months", "hardBoundary": true }
+  ],
+  "claims": [
+    { "id": "claim-repair-cost", "text": "The repair costs no more than EUR 400", "optionId": "option-repair", "status": "OPEN" },
+    { "id": "claim-buy-budget", "text": "The replacement stays within the EUR 1,000 budget", "optionId": "option-buy", "status": "RESOLVED" },
+    { "id": "claim-os-support", "text": "The repaired laptop receives current OS support", "optionId": "option-repair", "status": "OPEN" },
+    { "id": "claim-warranty", "text": "The repair provides twelve months of reliable use", "optionId": "option-repair", "status": "OPEN" }
+  ],
+  "sources": [
+    { "id": "source-repair-quote", "title": "Synthetic repair quote", "publisher": "North Workshop", "sourceType": "QUOTE", "official": false },
+    { "id": "source-vendor-price", "title": "Synthetic vendor offer", "publisher": "Example Vendor", "sourceType": "OFFER", "official": false },
+    { "id": "source-cost-review", "title": "Synthetic full-cost review", "publisher": "Independent Review", "sourceType": "REVIEW", "official": false },
+    { "id": "source-os-old", "title": "Synthetic legacy support note", "publisher": "Example OS Project", "sourceType": "DOCUMENTATION", "official": false },
+    { "id": "source-os-new", "title": "Synthetic replacement support note", "publisher": "Example OS Project", "sourceType": "DOCUMENTATION", "official": false },
+    { "id": "source-warranty", "title": "Synthetic repair limitation", "publisher": "North Workshop", "sourceType": "TERMS", "official": false }
+  ],
+  "passages": [
+    { "id": "passage-repair-cost", "sourceId": "source-repair-quote", "text": "Parts and labour total EUR 360.", "representation": "SYNTHETIC_VERBATIM", "locator": "Synthetic line 1" },
+    { "id": "passage-buy-price", "sourceId": "source-vendor-price", "text": "Promotional price: EUR 899 including delivery.", "representation": "SYNTHETIC_VERBATIM", "locator": "Synthetic line 1" },
+    { "id": "passage-buy-total", "sourceId": "source-cost-review", "text": "Required setup and accessories bring expected total cost to EUR 1,120.", "representation": "SYNTHETIC_VERBATIM", "locator": "Synthetic line 1" },
+    { "id": "passage-os-old", "sourceId": "source-os-old", "text": "Version v0 is supported until December 2028.", "representation": "SYNTHETIC_VERBATIM", "locator": "Synthetic line 1" },
+    { "id": "passage-os-new", "sourceId": "source-os-new", "text": "The replacement model receives current OS support.", "representation": "SYNTHETIC_VERBATIM", "locator": "Synthetic line 1" },
+    { "id": "passage-warranty", "sourceId": "source-warranty", "text": "This repair carries a 90-day parts warranty and no twelve-month reliability guarantee.", "representation": "SYNTHETIC_VERBATIM", "locator": "Synthetic line 1" }
+  ],
+  "scopes": [
+    { "id": "scope-repair-v1", "object": "laptop-a", "version": "v1", "position": "repair", "runId": "run-1", "validFrom": "2026-11-01", "validTo": "2027-02-01" },
+    { "id": "scope-buy-v1", "object": "laptop-a", "version": "v1", "position": "buy", "runId": "run-1", "validFrom": "2026-11-01", "validTo": "2027-02-01" },
+    { "id": "scope-repair-v0", "object": "laptop-a", "version": "v0", "position": "repair", "runId": "run-0", "validFrom": "2024-01-01", "validTo": "2025-01-01" }
+  ],
+  "reviews": [
+    { "id": "review-human-1", "reviewerType": "HUMAN", "result": "BOUND_TO_EXACT_PASSAGE", "timestamp": "2026-11-19T12:00:00Z", "note": "Synthetic fixture review" },
+    { "id": "review-buy-price-context", "reviewerType": "HUMAN", "result": "CONTEXT_ONLY", "timestamp": "2026-11-19T12:00:00Z", "note": "The delivered offer does not establish total cost including the required setup and accessories." },
+    { "id": "review-warranty-context", "reviewerType": "HUMAN", "result": "CONTEXT_ONLY", "timestamp": "2026-11-19T12:00:00Z", "note": "The passage states the warranty terms and leaves actual twelve-month reliability unproven." }
+  ],
+  "modelRuns": [
+    { "id": "model-run-1", "tool": "synthetic-fixture", "model": "none", "timestamp": "2026-11-19T11:00:00Z", "promptVersion": "fixture-v1" }
+  ],
+  "assertions": [
+    { "id": "assert-repair-cost", "claimId": "claim-repair-cost", "passageId": "passage-repair-cost", "scopeId": "scope-repair-v1", "reviewId": "review-human-1", "modelRunId": "model-run-1", "polarity": "SUPPORT", "currentness": "CURRENT", "encodingMethod": "HUMAN_BOUND", "affectedDecision": false },
+    { "id": "assert-buy-price", "claimId": "claim-buy-budget", "passageId": "passage-buy-price", "scopeId": "scope-buy-v1", "reviewId": "review-buy-price-context", "polarity": "SUPPORT", "currentness": "CURRENT", "encodingMethod": "HUMAN_BOUND", "affectedDecision": false },
+    { "id": "assert-buy-total", "claimId": "claim-buy-budget", "passageId": "passage-buy-total", "scopeId": "scope-buy-v1", "reviewId": "review-human-1", "polarity": "CONTRADICT", "currentness": "CURRENT", "encodingMethod": "HUMAN_BOUND", "affectedDecision": false },
+    { "id": "assert-os-old", "claimId": "claim-os-support", "passageId": "passage-os-old", "scopeId": "scope-repair-v0", "reviewId": "review-human-1", "polarity": "SUPPORT", "currentness": "STALE", "encodingMethod": "HUMAN_BOUND", "affectedDecision": false },
+    { "id": "assert-os-other-option", "claimId": "claim-os-support", "passageId": "passage-os-new", "scopeId": "scope-buy-v1", "reviewId": "review-human-1", "polarity": "SUPPORT", "currentness": "CURRENT", "encodingMethod": "HUMAN_BOUND", "affectedDecision": false },
+    { "id": "assert-warranty", "claimId": "claim-warranty", "passageId": "passage-warranty", "scopeId": "scope-repair-v1", "reviewId": "review-warranty-context", "polarity": "CONTRADICT", "currentness": "CURRENT", "encodingMethod": "HUMAN_BOUND", "affectedDecision": false }
+  ],
+  "decision": { "id": "decision-1", "selectedOptionId": "option-wait", "decidedAt": "2026-11-19", "revisitAt": "2026-12-15", "uncertainty": "Repair reliability remains unproven" }
+}

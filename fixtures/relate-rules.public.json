@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "case": { "id": "case-relate-rules", "title": "Interpret Relate hackathon requirements", "deadline": "2026-12-11", "status": "DECIDED", "evaluation": { "object": "relate-hackathon-entry", "version": "rules-2026-11-13", "runId": "official-check-2026-11-19", "asOf": "2026-11-19" } },
+  "options": [
+    { "id": "option-overview-reading", "label": "Rely on the overview wording", "position": "overview-reading" },
+    { "id": "option-rules-minimum", "label": "Use the stricter combined requirements", "position": "strict-combination" },
+    { "id": "option-hold-clarification", "label": "Hold and request clarification", "position": "hold-clarification" }
+  ],
+  "criteria": [
+    { "id": "criterion-project-age", "label": "Project age requirement", "hardBoundary": true },
+    { "id": "criterion-demo-format", "label": "Accepted demo format", "hardBoundary": true },
+    { "id": "criterion-prize-form", "label": "Prize form and substitution", "hardBoundary": true },
+    { "id": "criterion-submission-completeness", "label": "Complete submission requirements", "hardBoundary": true }
+  ],
+  "claims": [
+    { "id": "claim-existing-extension", "text": "An existing project may be extended and submitted", "optionId": "option-rules-minimum", "status": "RESOLVED" },
+    { "id": "claim-video-only", "text": "A complete submission requires a one-to-two-minute demo video", "optionId": "option-rules-minimum", "status": "OPEN" },
+    { "id": "claim-cash-substitution", "text": "A winner may replace the hardware prize with cash", "optionId": "option-rules-minimum", "status": "OPEN" },
+    { "id": "claim-ai-disclosure", "text": "AI tools are allowed when significant use is disclosed", "optionId": "option-rules-minimum", "status": "OPEN" },
+    { "id": "claim-public-repo-topic", "text": "The entry needs a public GitHub repository tagged relate", "optionId": "option-rules-minimum", "status": "OPEN" },
+    { "id": "claim-brand-only-privacy", "text": "A participant can use only a brand name everywhere during entry and judging", "optionId": "option-rules-minimum", "status": "OPEN" }
+  ],
+  "sources": [
+    { "id": "source-relate-overview", "title": "Relate by Neo4j Hackathon overview", "publisher": "Neo4j and Devpost", "sourceType": "OFFICIAL_OVERVIEW", "official": true, "url": "https://relate.devpost.com/", "checkedOn": "2026-11-19" },
+    { "id": "source-relate-rules", "title": "Relate by Neo4j Hackathon official rules", "publisher": "Neo4j and Devpost", "sourceType": "OFFICIAL_RULES", "official": true, "url": "https://relate.devpost.com/rules", "checkedOn": "2026-11-19" }
+  ],
+  "passages": [
+    { "id": "passage-overview-extension", "sourceId": "source-relate-overview", "text": "The overview welcomes both new projects and extensions of existing projects.", "representation": "PARAPHRASE", "locator": "Challenge description and project guidance" },
+    { "id": "passage-rules-new-project", "sourceId": "source-relate-rules", "text": "The official rules require a project started during the contest; earlier code may be reused only with disclosure, and only contest-period work is judged.", "representation": "PARAPHRASE", "locator": "Section 3, Project and Team Requirements" },
+    { "id": "passage-overview-video", "sourceId": "source-relate-overview", "text": "The overview submission checklist asks for a one-to-two-minute demo video.", "representation": "PARAPHRASE", "locator": "Submission checklist" },
+    { "id": "passage-rules-demo-choice", "sourceId": "source-relate-rules", "text": "The official rules accept either a video of up to two minutes or a link to a working demo.", "representation": "PARAPHRASE", "locator": "Section 4, complete submission" },
+    { "id": "passage-rules-no-cash", "sourceId": "source-relate-rules", "text": "The prizes are hardware and cannot be exchanged for cash.", "representation": "PARAPHRASE", "locator": "Section 6, Prize terms" },
+    { "id": "passage-rules-ai", "sourceId": "source-relate-rules", "text": "AI coding tools and models are allowed, and significant AI use must be described in the submission.", "representation": "PARAPHRASE", "locator": "Sections 3 and 4, AI use and disclosure" },
+    { "id": "passage-rules-public-repo", "sourceId": "source-relate-rules", "text": "The project repository must be public, carry the relate topic, and remain public through judging and the winner announcement.", "representation": "PARAPHRASE", "locator": "Section 3, Public repository" }
+  ],
+  "scopes": [
+    { "id": "scope-relate-current", "object": "relate-hackathon-entry", "version": "rules-2026-11-13", "position": "strict-combination", "runId": "official-check-2026-11-19", "validFrom": "2026-11-13", "validTo": "2026-12-17" }
+  ],
+  "reviews": [
+    { "id": "review-official-sources", "reviewerType": "AI_ASSISTED", "result": "PARAPHRASE_CHECKED_AGAINST_LOCATOR", "timestamp": "2026-11-19T20:00:00Z", "note": "Short paraphrases cross-checked against the two official public pages on the recorded date" }
+  ],
+  "modelRuns": [
+    { "id": "model-run-official-sources", "tool": "OpenAI Codex", "model": "unspecified", "timestamp": "2026-11-19T19:45:00Z", "promptVersion": "private-phase3-v1" }
+  ],
+  "assertions": [
+    { "id": "assert-overview-extension", "claimId": "claim-existing-extension", "passageId": "passage-overview-extension", "scopeId": "scope-relate-current", "reviewId": "review-official-sources", "modelRunId": "model-run-official-sources", "polarity": "SUPPORT", "currentness": "CURRENT", "encodingMethod": "AI_ASSISTED_BOUND", "affectedDecision": true },
+    { "id": "assert-rules-new-project", "claimId": "claim-existing-extension", "passageId": "passage-rules-new-project", "scopeId": "scope-relate-current", "reviewId": "review-official-sources", "modelRunId": "model-run-official-sources", "polarity": "CONTRADICT", "currentness": "CURRENT", "encodingMethod": "AI_ASSISTED_BOUND", "affectedDecision": true },
+    { "id": "assert-overview-video", "claimId": "claim-video-only", "passageId": "passage-overview-video", "scopeId": "scope-relate-current", "reviewId": "review-official-sources", "modelRunId": "model-run-official-sources", "polarity": "SUPPORT", "currentness": "CURRENT", "encodingMethod": "AI_ASSISTED_BOUND", "affectedDecision": true },
+    { "id": "assert-rules-demo-choice", "claimId": "claim-video-only", "passageId": "passage-rules-demo-choice", "scopeId": "scope-relate-current", "reviewId": "review-official-sources", "modelRunId": "model-run-official-sources", "polarity": "CONTRADICT", "currentness": "CURRENT", "encodingMethod": "AI_ASSISTED_BOUND", "affectedDecision": true },
+    { "id": "assert-rules-no-cash", "claimId": "claim-cash-substitution", "passageId": "passage-rules-no-cash", "scopeId": "scope-relate-current", "reviewId": "review-official-sources", "modelRunId": "model-run-official-sources", "polarity": "CONTRADICT", "currentness": "CURRENT", "encodingMethod": "AI_ASSISTED_BOUND", "affectedDecision": false },
+    { "id": "assert-rules-ai", "claimId": "claim-ai-disclosure", "passageId": "passage-rules-ai", "scopeId": "scope-relate-current", "reviewId": "review-official-sources", "modelRunId": "model-run-official-sources", "polarity": "SUPPORT", "currentness": "CURRENT", "encodingMethod": "AI_ASSISTED_BOUND", "affectedDecision": false },
+    { "id": "assert-rules-public-repo", "claimId": "claim-public-repo-topic", "passageId": "passage-rules-public-repo", "scopeId": "scope-relate-current", "reviewId": "review-official-sources", "modelRunId": "model-run-official-sources", "polarity": "SUPPORT", "currentness": "CURRENT", "encodingMethod": "AI_ASSISTED_BOUND", "affectedDecision": false }
+  ],
+  "decision": { "id": "decision-relate-rules", "selectedOptionId": "option-rules-minimum", "decidedAt": "2026-11-19", "revisitAt": "2026-12-10", "uncertainty": "The human chose the stricter combination without claiming that either public text overrides the other" }
+}

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "case": {
+    "id": "case-construction-before",
+    "title": "Synthetic construction review: before the recess record",
+    "deadline": "2026-12-04",
+    "status": "UNDER_REVIEW",
+    "evaluation": {
+      "object": "synthetic-slab",
+      "version": "revision-b",
+      "runId": "document-review",
+      "asOf": "2026-11-22"
+    }
+  },
+  "options": [
+    { "id": "option-construction-flat-before", "label": "Flat slab area", "position": "flat-slab" },
+    { "id": "option-construction-recess-before", "label": "Recess", "position": "recess" },
+    { "id": "option-construction-clarify-before", "label": "Refer the open review question for clarification", "position": "clarify" }
+  ],
+  "criteria": [
+    { "id": "criterion-construction-scope-before", "label": "Evidence must cover the location and the current document revision", "hardBoundary": true }
+  ],
+  "claims": [
+    { "id": "claim-construction-flat-before", "text": "The standard detail is documented for the flat slab area.", "optionId": "option-construction-flat-before", "status": "OPEN" },
+    { "id": "claim-construction-recess-before", "text": "A reinforcement support detail is documented for the recess in the current revision.", "optionId": "option-construction-recess-before", "status": "OPEN" },
+    { "id": "claim-construction-register-before", "text": "The design query about the recess is closed in the review register.", "optionId": "option-construction-recess-before", "status": "RESOLVED" }
+  ],
+  "sources": [
+    { "id": "source-construction-flat-before", "title": "Synthetic standard detail record", "publisher": "Fictional project records", "sourceType": "DOCUMENTATION", "official": false },
+    { "id": "source-construction-old-before", "title": "Synthetic Revision A note", "publisher": "Fictional project records", "sourceType": "DOCUMENTATION", "official": false },
+    { "id": "source-construction-register-a-before", "title": "Synthetic review register A", "publisher": "Fictional review role A", "sourceType": "REVIEW", "official": false },
+    { "id": "source-construction-register-b-before", "title": "Synthetic review register B", "publisher": "Fictional review role B", "sourceType": "REVIEW", "official": false }
+  ],
+  "passages": [
+    { "id": "passage-construction-flat-before", "sourceId": "source-construction-flat-before", "text": "The standard detail record applies to the flat slab area.", "representation": "SYNTHETIC_VERBATIM", "locator": "Fictional entry R-1" },
+    { "id": "passage-construction-old-before", "sourceId": "source-construction-old-before", "text": "Revision A records a separate reinforcement support detail for the recess.", "representation": "SYNTHETIC_VERBATIM", "locator": "Fictional entry A-1" },
+    { "id": "passage-construction-closed-before", "sourceId": "source-construction-register-a-before", "text": "Review register A records the design query about the recess as closed.", "representation": "SYNTHETIC_VERBATIM", "locator": "Fictional entry P-1" },
+    { "id": "passage-construction-open-before", "sourceId": "source-construction-register-b-before", "text": "Review register B records the same design query as still open.", "representation": "SYNTHETIC_VERBATIM", "locator": "Fictional entry P-2" }
+  ],
+  "scopes": [
+    { "id": "scope-construction-flat-before", "object": "synthetic-slab", "version": "revision-b", "position": "flat-slab", "runId": "document-review", "validFrom": "2026-11-20", "validTo": "2026-12-04" },
+    { "id": "scope-construction-recess-before", "object": "synthetic-slab", "version": "revision-b", "position": "recess", "runId": "document-review", "validFrom": "2026-11-20", "validTo": "2026-12-04" },
+    { "id": "scope-construction-old-before", "object": "synthetic-slab", "version": "revision-a", "position": "recess", "runId": "document-review", "validFrom": "2026-11-01", "validTo": "2026-11-19" }
+  ],
+  "reviews": [
+    { "id": "review-construction-binding-before", "reviewerType": "HUMAN", "result": "BOUND_TO_EXACT_PASSAGE", "timestamp": "2026-11-22T12:00:00Z", "note": "Fictional review of exact passage binding for this documentation example." }
+  ],
+  "modelRuns": [],
+  "assertions": [
+    { "id": "assert-construction-flat-before", "claimId": "claim-construction-flat-before", "passageId": "passage-construction-flat-before", "scopeId": "scope-construction-flat-before", "reviewId": "review-construction-binding-before", "polarity": "SUPPORT", "currentness": "CURRENT", "encodingMethod": "DETERMINISTIC_IMPORT", "affectedDecision": false },
+    { "id": "assert-construction-wrong-location-before", "claimId": "claim-construction-recess-before", "passageId": "passage-construction-flat-before", "scopeId": "scope-construction-flat-before", "reviewId": "review-construction-binding-before", "polarity": "SUPPORT", "currentness": "CURRENT", "encodingMethod": "DETERMINISTIC_IMPORT", "affectedDecision": false },
+    { "id": "assert-construction-old-revision-before", "claimId": "claim-construction-recess-before", "passageId": "passage-construction-old-before", "scopeId": "scope-construction-old-before", "reviewId": "review-construction-binding-before", "polarity": "SUPPORT", "currentness": "STALE", "encodingMethod": "DETERMINISTIC_IMPORT", "affectedDecision": false },
+    { "id": "assert-construction-register-closed-before", "claimId": "claim-construction-register-before", "passageId": "passage-construction-closed-before", "scopeId": "scope-construction-recess-before", "reviewId": "review-construction-binding-before", "polarity": "SUPPORT", "currentness": "CURRENT", "encodingMethod": "DETERMINISTIC_IMPORT", "affectedDecision": false },
+    { "id": "assert-construction-register-open-before", "claimId": "claim-construction-register-before", "passageId": "passage-construction-open-before", "scopeId": "scope-construction-recess-before", "reviewId": "review-construction-binding-before", "polarity": "CONTRADICT", "currentness": "CURRENT", "encodingMethod": "DETERMINISTIC_IMPORT", "affectedDecision": true }
+  ],
+  "decision": {
+    "id": "decision-construction-before",
+    "selectedOptionId": "option-construction-clarify-before",
+    "decidedAt": "2026-11-22",
+    "revisitAt": "2026-12-04",
+    "uncertainty": "The review registers disagree on whether the recess query has been closed."
+  }
+}
